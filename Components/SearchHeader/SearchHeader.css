@@ -1,0 +1,46 @@
+
+.navbar-brand a {
+    text-decoration: none; }
+
+    .navbar.center .navbar-inner {
+        text-align: center;
+    }
+    
+    .navbar.center .navbar-inner .nav {
+        display:inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .navbar-nav{
+        border-radius: 5px;
+        width:100px
+    }
+
+    .nav ul {
+        list-style: none;
+        text-align: center;
+padding-left: 250px;
+
+     }
+     
+     .nav ul li {
+        display: inline-block;
+     }
+     .navb{
+        text-align: center;
+     }
+
+     .center.navbar-inner {
+        text-align:center;
+        }
+       
+        .navbar-inner {
+        margin: 0 auto;
+        }
+        ul.navbar-nav.bg-light.mr-auto{
+            margin-left:450px;
+        }
+
+        form.form-inline.my-2.my-lg-0.auto { 
+               margin-right:450px;
+            }

@@ -1,0 +1,96 @@
+.progress {
+    height: 16px;
+    font-size: 12px;
+}
+
+.movie_wrap {
+  margin-top: 15px;
+  .btn-group a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .pagination {
+    .page-item {
+      cursor: pointer;
+    }
+  }
+}
+
+// Define vars we'll be using
+$brand-success: #2C3E50;
+$loader-size: 8em;
+$check-height: $loader-size/2;
+$check-width: $check-height/2;
+$check-left: ($loader-size/6 + $loader-size/12);
+$check-thickness: 6px;
+$check-color: $brand-success;
+
+.circle-loader-wrap {
+  display: flex;
+  min-height: calc(100vh - 65px);
+  flex-direction: column;
+  margin-top: 56px;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-loader {
+  margin: 0 0 30px 10px;
+  border: $check-thickness solid rgba(0, 0, 0, 0.2);
+  border-left-color: $check-color;
+  animation-name: loader-spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.circle-loader,
+.circle-loader:after {
+  border-radius: 50%;
+  width: $loader-size;
+  height: $loader-size;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: $check-width;
+    opacity: 1;
+  }
+  40% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+  100% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+}
+
+
+.btn-secondary:not([disabled]):not(.disabled):active, .btn-secondary:not([disabled]):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+   color: #fff;
+   background-color: #798d8f;
+   border-color: none!important;
+   -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
