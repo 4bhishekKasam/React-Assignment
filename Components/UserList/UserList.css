@@ -1,0 +1,24 @@
+.img-circle .img-responsive{
+    width:78px; height:80px;
+  }
+  
+  .container-fluid{
+    background-color:#E0E0E0;
+    color:black;
+  }
+  .jumbotron .container{
+    background-color:whitesmoke;
+    color:black;
+   
+  }
+  
+  .collapse{
+    padding-top:4px;
+  }
+  
+  .btn-outline {
+    color: inherit;
+  }
+  .btn-primary.btn-outline{
+    background-color: transparent;color:blue;
+  }
