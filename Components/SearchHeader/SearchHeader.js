@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem, UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
-} from 'reactstrap';
+import UserList  from '../UserList/UserList';
 
 import './SearchHeader.css';
 
@@ -18,7 +9,9 @@ class SearchHeader extends Component {
         this.state = {
             errorMessage: '',
             userList: [],
-            isOpen: false
+            isOpen: false,
+            userName:''
+            
         };
         this.toggle = this.toggle.bind(this);
         this.getUsers = this.getUsers.bind(this);
@@ -32,12 +25,13 @@ class SearchHeader extends Component {
     //     this.getUsers();
     //   }
     
-      getUsers() {
-        fetch('https://api.github.com/search/users?q=${this.state.userName}')
+      getUsers(e) {
+        console.log('get users called='+e.target.value);
+        fetch('https://api.github.com/search/users?q='+ e.target.value)
         .then(res => res.json())
         .then(
             userList =>{
-                this.setState({userList: userList})
+                this.setState({userList: userList.items})
                 console.log(userList);
             }
         );
@@ -61,8 +55,7 @@ class SearchHeader extends Component {
                                     <a className="dropdown-item" href="#">Sort by Name (descending)</a>
                                     <div className="dropdown-divider"></div>
                                     <a className="dropdown-item" href="#">Sort by Rank (ascending)</a>
-                                    <a className="dropdown-item" href="#">Sort by Rank (descending)</a>                                
-                                  
+                                    <a className="dropdown-item" href="#">Sort by Rank (descending)</a>                                                                 
                                 </div>
                             </li>
                         </ul>
@@ -70,14 +63,19 @@ class SearchHeader extends Component {
                         <form className="form-inline my-2 my-lg-0 auto" onSubmit={this.getUsers}>
                             <div className="form-group">
                                 <input className="form-control mr-sm-2" type="Search" placeholder="Search" 
-                                aria-label="Search"  ref="textInput"  
-                                value={this.state.userName} >
-
+                                aria-label="Search"  
+                                id="userName"                                 
+                                onKeyUp={this.getUsers} >                 
                                 </input>
                             </div>
                         </form>
                     </div>
                 </nav>
+
+                <div > 
+
+                    <UserList userList={this.state.userList}/>
+                </div>
             </div>
         );
     }
