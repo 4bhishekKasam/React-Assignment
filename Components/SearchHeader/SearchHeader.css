@@ -5,6 +5,9 @@
     .navbar.center .navbar-inner {
         text-align: center;
     }
+    .navbar{
+        height: 70px;
+    }
     
     .navbar.center .navbar-inner .nav {
         display:inline-block;
@@ -19,7 +22,7 @@
     .nav ul {
         list-style: none;
         text-align: center;
-padding-left: 250px;
+/* padding-left: 250px; */
 
      }
      
@@ -38,9 +41,9 @@ padding-left: 250px;
         margin: 0 auto;
         }
         ul.navbar-nav.bg-light.mr-auto{
-            margin-left:450px;
+            margin-left:300px;
         }
 
         form.form-inline.my-2.my-lg-0.auto { 
-               margin-right:450px;
-            }
+               margin-right:300px;
+            } 
