@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserList  from '../UserList/UserList';
+import UserList from '../UserList/UserList';
 
 import './SearchHeader.css';
 
@@ -10,8 +10,8 @@ class SearchHeader extends Component {
             errorMessage: '',
             userList: [],
             isOpen: false,
-            userName:''
-            
+            userName: ''
+
         };
         this.toggle = this.toggle.bind(this);
         this.getUsers = this.getUsers.bind(this);
@@ -21,21 +21,20 @@ class SearchHeader extends Component {
             isOpen: !this.state.isOpen
         });
     }
-    // componentWillMount(){
-    //     this.getUsers();
-    //   }
-    
-      getUsers(e) {
-        console.log('get users called='+e.target.value);
-        fetch('https://api.github.com/search/users?q='+ e.target.value)
-        .then(res => res.json())
-        .then(
-            userList =>{
-                this.setState({userList: userList.items})
+
+
+    getUsers(e) {
+        console.log('get users called=' + e.target.value);
+        fetch('https://api.github.com/search/users?q=' + e.target.value)
+            //   fetch('https://api.github.com/users/'+e.target.value)
+            .then(res => res.json())
+            .then(
+            userList => {
+                this.setState({ userList: userList.items })
                 console.log(userList);
             }
-        );
-      }
+            );
+    }
 
 
     render() {
@@ -55,26 +54,26 @@ class SearchHeader extends Component {
                                     <a className="dropdown-item" href="#">Sort by Name (descending)</a>
                                     <div className="dropdown-divider"></div>
                                     <a className="dropdown-item" href="#">Sort by Rank (ascending)</a>
-                                    <a className="dropdown-item" href="#">Sort by Rank (descending)</a>                                                                 
+                                    <a className="dropdown-item" href="#">Sort by Rank (descending)</a>
                                 </div>
                             </li>
                         </ul>
 
                         <form className="form-inline my-2 my-lg-0 auto" onSubmit={this.getUsers}>
                             <div className="form-group">
-                                <input className="form-control mr-sm-2" type="Search" placeholder="Search" 
-                                aria-label="Search"  
-                                id="userName"                                 
-                                onKeyUp={this.getUsers} >                 
+                                <input className="form-control mr-sm-2" type="Search" placeholder="Search"
+                                    aria-label="Search"
+                                    id="userName"
+                                    onKeyUp={this.getUsers} >
                                 </input>
                             </div>
                         </form>
                     </div>
                 </nav>
 
-                <div > 
+                <div >
 
-                    <UserList userList={this.state.userList}/>
+                    <UserList userList={this.state.userList} />
                 </div>
             </div>
         );
