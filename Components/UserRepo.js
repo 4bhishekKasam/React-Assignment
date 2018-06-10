@@ -1,49 +1,48 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import './UserRepo.css';
 
 class UserRepo extends Component {
     constructor(props) {
         super(props)
-        //   this.state ={  repoCall: []}
-
+        this.state = { rep: [] }
     }
 
     componentWillMount() {
-        console.log('--------------repo start---')
+        
         console.log('check=' + this.props.repoCall)
-
-        fetch('https://api.github.com/users/' + this.props.repoCall + '/repos')
+        //   fetch('https://api.github.com/users/' + this.props.repoCall + '/repos')
+        fetch(`https://api.github.com/users/${this.props.repoCall}`)
             .then(res => res.json())
             .then(
-                repoCall => {
-                    this.setState({
-                        repoCall
-
-                    });
-                    console.log(this.state.repoCall);
-                }
+            rep => {
+                this.setState({
+                    rep: rep
+                }, () => console.log('here is repo list' + rep));
+            }
             );
-        console.log('----rrr---------end---')
+     
     }
 
-
     render() {
+
+        // const reposList = this.state.rep.map((list) => (
+        //     <div>
+        //         <table className="table table-striped">
+        //             <tbody>
+        //                 <tr key={list.repos}>
+        //                     <td>{list.repos}</td>
+        //                     <td>{list.langauge}</td>
+        //                 </tr>
+        //             </tbody>
+        //         </table>
+        //     </div>
+        // ));
+
         return (
-            <div>
-                <div class="jumbotron container">
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr >
-                                {/* <td>Data Label :{this.state.repoCall.followers}</td>  */}
-                            </tr>
-                            <tr >
-                                <td>Data Label </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div className="jumbotron container">
+                {/* {repoList}              */}
+                <h3>hello</h3>
             </div>
         );
     }
