@@ -1,27 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
+import UserRepo from '../UserRepo';
 import './UserList.css';
-const _baseUrl = "https://api.github.com/users/";
 
 class UserList extends Component {
-
-
-    renderStat(stat) {
-        return (
-          
-            <div class="jumbotron container">
-                <table class="table table-striped">
-                    <tbody>
-                        <tr key={stat.name}>
-                            <td>Data Label {stat.name} : {stat.value}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
+    constructor(props) {
+        super(props)
+        this.state = {}
     }
-
 
     render() {
 
@@ -37,34 +23,21 @@ class UserList extends Component {
                             <h3>  {user.login}</h3>
                             <p>    Profile URL : {user.html_url} </p>
                             <p>     Score : {user.score}   </p>
-                            <p>Type :  {user.type}</p>
+                            <p>    Type :  {user.type}</p>
                         </div>
                     </div>
                     <div className="row pull-right">
                         <div className="col-12">
                             <button type="button" className="btn btn-primary btn-outline btn-lg"
                                 data-toggle="collapse" data-target="#collapseExample"
-                                aria-expanded="false" aria-controls="collapseExample">Details</button>
+                                aria-expanded="false" aria-controls="collapseExample" value={user.login}
+                                id="b1" >Details</button>
                         </div>
                     </div>
-                </div>
 
+                </div>
                 <div className="collapse" id="collapseExample">
-                    <div className="jumbotron container">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>Data Label :</td>
-                                </tr>
-                                <tr>
-                                    <td>Data Label :</td>
-                                </tr>
-                                <tr>
-                                    <td>Data Label :</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <UserRepo repoCall={user.login} />
                 </div>
             </div>
 
@@ -76,15 +49,6 @@ class UserList extends Component {
             </div>
         );
     }
-
 }
-
-UserList.propTypes = {
-    user: PropTypes.shape({
-        bio: PropTypes.string,
-        followers: PropTypes.number,
-        following: PropTypes.number
-    })
-};
 
 export default UserList;
